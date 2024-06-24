@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Edgewater Resource Consumption Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+		<div id="wrapper" class="fade-in">
+
+			<!-- Intro -->
+			<div id="intro">
+				<h1>Edgewater Resource Consumption Analysis<br /></h1>
+				<p>In-depth analysis of resource consumption patterns to drive sustainability and efficiency improvements.</p>
+				<ul class="actions">
+					<li><a href="#main" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+				</ul>
+			</div>
+
+			<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="logo">Portfolio</a>
+			</header>
+
+			<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="#main">Edgewater Project</a></li>
+				</ul>
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/shreeramhiriyanna/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</nav>
+
+			<!-- Main -->
+			<div id="main">
+
+				<!-- Featured Post -->
+				<article class="post featured">
+					<header class="major">
+						
+						<h2>Edgewater Resource Consumption Analysis With R</h2>
+						<p>In-depth analysis of resource consumption patterns to drive sustainability and efficiency improvements.</p>
+					</header>
+					<a href="#" class="image main"><img src="images/R.png" alt="Edgewater Project" /></a>
+				</article>
+
+				<!-- Project Details -->
+				<section>
+					<header class="major">
+						<h3>Challenge</h3>
+					</header>
+					<p>Edgewater faced significant challenges in managing its resource consumption efficiently. With increasing operational costs and a growing emphasis on sustainability, understanding the patterns and drivers behind energy and water usage was crucial. The primary goal was to identify key factors influencing consumption and uncover areas for potential efficiency improvements.</p>
+
+					<header class="major">
+						<h3>The Journey</h3>
+					</header>
+					<p>We embarked on a detailed analysis of Edgewater's resource consumption data, focusing on water usage, electricity consumption, natural gas (NG), greenhouse gas emissions (GHG), and energy use intensity (EUI). The journey involved several key steps:</p>
+
+					<h4>Data Distribution Analysis:</h4>
+					<ul>
+						<li><strong>Water Usage:</strong> Analysis revealed a log-normal distribution with notable high-value outliers.</li>
+						<li><strong>Electricity Consumption:</strong> Data showed a right-skewed distribution with many outliers.</li>
+						<li><strong>NG Consumption:</strong> Similar right-skewed distribution with significant outliers.</li>
+						<li><strong>GHG Emissions:</strong> Right-skewed with significant outliers, confirming non-normal distribution.</li>
+						<li><strong>EUI:</strong> Data indicated right-skewed distribution with potential outliers.</li>
+					</ul>
+
+					<h4>Regression Modeling:</h4>
+					<ul>
+						<li><strong>GHG and Area:</strong> Identified a strong correlation with an R-squared of 0.679.</li>
+						<li><strong>EUI and Area:</strong> Showed a less significant correlation with an R-squared of 0.02478.</li>
+						<li><strong>Comprehensive Model:</strong> Combined variables with an adjusted R-squared of 0.301, suggesting a reasonable fit.</li>
+					</ul>
+
+					<h4>Outlier Identification:</h4>
+					<p>Q-Q plots and Cook’s distance analyses highlighted significant residuals and influential data points needing further assessment.</p>
+
+					<header class="major">
+						<h3>Conclusion</h3>
+					</header>
+					<p>Through meticulous analysis, we uncovered critical insights into Edgewater's resource consumption patterns. The journey revealed that specific factors like area significantly influenced GHG emissions, while the overall fit for EUI required more nuanced modeling. Identifying outliers and understanding distribution characteristics paved the way for targeted efficiency improvements. This analysis provides a foundation for informed decision-making, ultimately guiding Edgewater towards more sustainable and cost-effective resource management.</p>
+				</section>
+
+				<!-- Footer -->
+				<footer>
+					<div class="pagination">
+						<a href="index.html" class="button">Back to Portfolio</a>
+					</div>
+				</footer>
+
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<section>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" />
+							</div>
+							<div class="field">
+								<label for="email">Email</label>
+								<input type="text" name="email" id="email" />
+							</div>
+							<div class="field">
+								<label for="message">Message</label>
+								<textarea name="message" id="message" rows="3"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" /></li>
+						</ul>
+					</form>
+				</section>
+				<section class="split contact">
+					<section class="alt">
+						<h3>Location</h3>
+						<p>Chicago, IL<br /></p>
+					</section>
+					
+					<section>
+						<h3>Email</h3>
+						<p><a href="#">shreeram14296@gmail.com</a></p>
+					</section>
+					<section>
+						<h3>Social</h3>
+						<ul class="icons alt">
+							<li><a href="https://www.linkedin.com/in/shreeramhiriyanna/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</section>
+				</section>
+			</footer>
+
+			<!-- Copyright -->
+			<div id="copyright">
+				<ul><li>&copy; Shreeram Hiriyanna Portfolio</li></ul>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

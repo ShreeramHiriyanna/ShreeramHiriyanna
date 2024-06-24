@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Transforming Retail with SQL - Shreeram Hiriyanna Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+		<div id="wrapper" class="fade-in">
+			<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="logo">Shreeram Hiriyanna Portfolio</a>
+			</header>
+			
+			<!-- Main -->
+			<div id="main">
+				<!-- Post -->
+				<article class="post">
+					<header class="major">
+						
+						<h1>Transforming Retail with SQL</h1>
+					</header>
+					<section>
+						<h2>The Challenge</h2>
+						<p>FoxCore Retail, a vibrant company specializing in novelty items for music festivals and trade shows, was facing significant challenges with its data management system. Manual data entry errors, inefficient sales tracking, and the lack of real-time analytics were hindering their growth and decision-making capabilities.</p>
+						
+						<h2>Our Mission</h2>
+						<p>Our team was tasked with transforming FoxCore's data management into a robust, automated system. The objective was clear: develop a relational database that not only automates sales tracking but also provides real-time insights, ensuring data integrity and supporting strategic decisions.</p>
+						
+						<h2>The Journey</h2>
+						<h3>1. Understanding the Problem</h3>
+						<p>We began by diving deep into FoxCore’s existing processes, identifying key pain points. The manual data entry process was prone to errors and time-consuming. There was an urgent need for a system that could handle large volumes of sales data accurately and efficiently.</p>
+						
+						<h3>2. Designing the Solution</h3>
+						<p>With a thorough understanding of the problem, we designed an Entity-Relationship (ER) model to map out the data entities and their relationships. This model was crucial in structuring the database to ensure data integrity and minimize redundancy.</p>
+						
+						<h3>3. Building the Database</h3>
+						<p>Using PostgreSQL, we developed a relational database that automated sales data recording and retrieval. Here’s a glimpse of the code we used:</p>
+						<pre><code class="language-sql">
+-- Example: SQL for creating a table
+CREATE TABLE Events (
+	EventID SERIAL PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	Date DATE NOT NULL,
+	VenueID INT REFERENCES Venues(VenueID)
+);
+						</code></pre>
+						
+						<h3>4. Ensuring Efficiency</h3>
+						<p>To handle high volumes of queries efficiently, we optimized the database with views and indexes. This ensured quick data retrieval and smooth operations even during peak times.</p>
+						<pre><code class="language-sql">
+-- Example: SQL for creating an index
+CREATE INDEX idx_event_date ON Events(Date);
+						</code></pre>
+						
+						<h2>The Impact</h2>
+						<p>Our efforts resulted in a system that dramatically improved operational efficiency. The automated sales tracking reduced errors and saved time, while the real-time analytics provided FoxCore with valuable insights into sales performance, product popularity, and event profitability.</p>
+						
+						<p>FoxCore could now make informed, data-driven decisions, propelling their strategic planning to new heights. The system we built was not only robust but also scalable, ready to grow alongside the company.</p>
+						
+						<h2>Looking Ahead</h2>
+						<p>The FoxCore Retail Project laid a solid foundation for future enhancements. We proposed continuous database evolution to adapt to market dynamics and growth, integrating advanced analytics for better strategic planning and expanding functionality for mobile access.</p>
+						
+						<h2>Conclusion</h2>
+						<p>Working on the FoxCore Retail Project was a transformative experience. It highlighted the power of strategic data management in solving real-world problems and driving business growth. This project not only addressed immediate operational challenges but also set the stage for sustained innovation and success.</p>
+						
+						<h2>Visual Highlights</h2>
+						<h3>ER Diagram</h3>
+						<img src="images/er-diagram.jpg" alt="ER Diagram" style="max-width: 100%; height: auto;"  />
+						
+						
+						<h3>Key Code Snippets</h3>
+						<pre><code class="language-sql">
+-- Example: SQL for creating a table
+CREATE TABLE Events (
+	EventID SERIAL PRIMARY KEY,
+	Name VARCHAR(100) NOT NULL,
+	Date DATE NOT NULL,
+	VenueID INT REFERENCES Venues(VenueID)
+);
+						</code></pre>
+						<pre><code class="language-sql">
+-- Example: SQL for inserting data
+INSERT INTO Events (Name, Date, VenueID)
+VALUES ('Music Festival', '2024-06-01', 1);
+						</code></pre>
+						<pre><code class="language-sql">
+-- Example: SQL for creating relationships
+ALTER TABLE Sales ADD CONSTRAINT FK_ProductID FOREIGN KEY (ProductID) REFERENCES Products(ProductID);
+						</code></pre>
+					</section>
+				</article>
+			</div>
+			
+			<!-- Footer -->
+			<footer id="footer">
+				<section class="split contact">
+					<section class="alt">
+						<h3>Location</h3>
+						<p>Chicago, IL</p>
+					</section>
+					
+					<section>
+						<h3>Email</h3>
+						<p><a href="mailto:shreeram14296@gmail.com">shreeram14296@gmail.com</a></p>
+					</section>
+					<section>
+						<h3>Social</h3>
+						<ul class="icons alt">
+							<li><a href="https://www.linkedin.com/in/shreeramhiriyanna/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</section>
+				</section>
+			</footer>
+			
+			<!-- Copyright -->
+			<div id="copyright">
+				<ul><li>&copy; Shreeram Hiriyanna Portfolio</li></ul>
+			</div>
+		</div>
+		
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

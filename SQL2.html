@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Data Cleaning and Exploratory Data Analysis - Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo">Portfolio</a>
+        </header>
+        
+        <!-- Main -->
+        <div id="main">
+            <!-- Featured Post -->
+            <article class="post featured">
+                <header class="major">
+                    
+                    <h1>Data Cleaning and Exploratory Data Analysis</h1>
+                    <p>Analyze and derive insights from a dataset through rigorous data cleaning and exploratory data analysis.</p>
+                </header>
+                <a href="#" class="image main"><img src="images/SQL2.png" alt="Data Cleaning Project" /></a>
+            </article>
+
+            <!-- Project Details -->
+            <section>
+                <header class="major">
+                    <h2>Challenge</h2>
+                </header>
+                <p>The dataset contained numerous records of layoffs from various companies, presenting several challenges:</p>
+                <ul>
+                    <li><strong>Duplicates:</strong> Multiple records for the same event needed to be identified and removed.</li>
+                    <li><strong>Inconsistent Data Formats:</strong> Company names, country names, and dates had inconsistent formats and trailing whitespaces.</li>
+                    <li><strong>Null Values:</strong> Missing data in critical fields required handling.</li>
+                    <li><strong>Data Integrity:</strong> Ensuring the integrity of the data after cleaning, especially for fields like total layoffs and percentage laid off.</li>
+                </ul>
+                
+                <header class="major">
+                    <h2>The Journey</h2>
+                </header>
+                
+                <h3>Step 1: Removing Duplicates</h3>
+                <ul>
+                    <li>Created a new table <code>layoffs1</code> to store distinct records from the original table.</li>
+                    <li>Identified and removed duplicates using the <code>ROW_NUMBER()</code> function.</li>
+                </ul>
+                
+                <h3>Step 2: Standardizing Data</h3>
+                <ul>
+                    <li>Trimmed whitespace from company names.</li>
+                    <li>Standardized country names by removing trailing periods.</li>
+                    <li>Converted date formats from text to SQL <code>DATE</code> type.</li>
+                </ul>
+                
+                <h3>Step 3: Handling Null Values</h3>
+                <ul>
+                    <li>Identified and addressed rows with missing or empty industry fields.</li>
+                    <li>Removed rows where both <code>total_laid_off</code> and <code>percentage_laid_off</code> were null.</li>
+                </ul>
+                
+                <h3>Step 4: Creating Final Cleaned Table</h3>
+                <ul>
+                    <li>Created a refined table <code>layoffs2</code> to hold cleaned data.</li>
+                    <li>Dropped intermediary columns used for data cleaning.</li>
+                </ul>
+                
+                <header class="major">
+                    <h2>Exploratory Data Analysis</h2>
+                </header>
+                
+                <h3>General Statistics</h3>
+                <ul>
+                    <li>Identified the maximum number of layoffs in a single event and companies with 100% layoffs.</li>
+                </ul>
+                
+                <h3>Company-Specific Insights</h3>
+                <ul>
+                    <li>Summed total layoffs per company and identified largest layoff events for companies with 100% layoffs.</li>
+                </ul>
+                
+                <h3>Temporal Analysis</h3>
+                <ul>
+                    <li>Analyzed trends over the years and months.</li>
+                </ul>
+                
+                <h3>Industry and Country Analysis</h3>
+                <ul>
+                    <li>Summed total layoffs by industry and country.</li>
+                </ul>
+                
+                <h3>Rolling Summation</h3>
+                <ul>
+                    <li>Calculated monthly rolling sum of layoffs to visualize trends over time.</li>
+                </ul>
+                
+                <h3>Yearly Company Layoffs</h3>
+                <ul>
+                    <li>Ranked companies based on total layoffs per year and identified the top 5 companies with the highest layoffs each year.</li>
+                </ul>
+                
+                <header class="major">
+                    <h2>Conclusion</h2>
+                </header>
+                <p>This project highlights the importance of data cleaning in preparing datasets for analysis and the power of SQL in extracting insights from cleaned data. By transforming a raw dataset into a structured format and performing thorough exploratory data analysis, valuable insights can be derived to inform industry trends and company performance. This project demonstrates a comprehensive approach to managing and analyzing data effectively.</p>
+                
+                <header class="major">
+                    <h2>Code Snippets</h2>
+                </header>
+                
+                <h3>Step 1: Removing Duplicates</h3>
+                <pre><code class="language-sql">
+-- Creating a new table identical to the original
+CREATE TABLE layoffs1 LIKE layoffs;
+
+-- Inserting distinct records into the new table
+INSERT INTO layoffs1
+SELECT DISTINCT * FROM layoffs;
+
+-- Identifying and removing duplicates
+WITH duplicates AS (
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY company, location, industry, total_laid_off, percentage_laid_off, `date`, stage, country, funds_raised_millions) AS row_count
+  FROM layoffs1
+)
+DELETE FROM layoffs1 WHERE row_count > 1;
+                </code></pre>
+                
+                <h3>Step 2: Standardizing Data</h3>
+                <pre><code class="language-sql">
+-- Trimming whitespace from company names
+UPDATE layoffs1 SET company = TRIM(company);
+
+-- Standardizing country names by removing trailing periods
+UPDATE layoffs1 SET country = TRIM(TRAILING '.' FROM country);
+
+-- Converting date formats from text to SQL DATE type
+UPDATE layoffs1 SET `date` = STR_TO_DATE(`date`, '%m/%d/%Y');
+ALTER TABLE layoffs1 MODIFY COLUMN `date` DATE;
+                </code></pre>
+                
+                <h3>Step 3: Handling Null Values</h3>
+                <pre><code class="language-sql">
+-- Removing rows with missing or empty industry fields
+DELETE FROM layoffs1 WHERE industry IS NULL OR industry = '';
+
+-- Removing rows where both total_laid_off and percentage_laid_off are null
+DELETE FROM layoffs1 WHERE total_laid_off IS NULL AND percentage_laid_off IS NULL;
+                </code></pre>
+                
+                <h3>Step 4: Creating Final Cleaned Table</h3>
+                <pre><code class="language-sql">
+-- Creating a refined table to hold cleaned data
+CREATE TABLE layoffs2 AS SELECT * FROM layoffs1;
+
+-- Dropping intermediary columns
+ALTER TABLE layoffs2 DROP COLUMN row_count;
+                </code></pre>
+                
+                <h3>Exploratory Data Analysis</h3>
+                
+                <h4>General Statistics</h4>
+                <pre><code class="language-sql">
+-- Maximum number of layoffs in a single event
+SELECT MAX(total_laid_off) FROM layoffs2;
+
+-- Companies with 100% layoffs
+SELECT * FROM layoffs2 WHERE percentage_laid_off = 1;
+                </code></pre>
+                
+                <h4>Company-Specific Insights</h4>
+                <pre><code class="language-sql">
+-- Total layoffs per company
+SELECT company, SUM(total_laid_off) FROM layoffs2 GROUP BY company ORDER BY SUM(total_laid_off) DESC;
+
+-- Largest layoff events for companies with 100% layoffs
+SELECT * FROM layoffs2 WHERE percentage_laid_off = 1 ORDER BY total_laid_off DESC;
+                </code></pre>
+                
+                <h4>Temporal Analysis</h4>
+                <pre><code class="language-sql">
+-- Start and end dates of layoffs
+SELECT MIN(`date`) AS Start_date, MAX(`date`) AS End_date FROM layoffs2;
+
+-- Layoffs trends over the years
+SELECT YEAR(`date`), SUM(total_laid_off) FROM layoffs2 GROUP BY YEAR(`date`) ORDER BY YEAR(`date`) DESC;
+
+-- Layoffs trends over the months
+SELECT SUBSTRING(`date`, 1, 7) AS `Month`, SUM(total_laid_off) FROM layoffs2 GROUP BY `Month` ORDER BY `Month` ASC;
+                </code></pre>
+                
+                <h4>Industry and Country Analysis</h4>
+                <pre><code class="language-sql">
+-- Total layoffs by industry
+SELECT industry, SUM(total_laid_off) FROM layoffs2 GROUP BY industry ORDER BY SUM(total_laid_off) DESC;
+
+-- Total layoffs by country
+SELECT country, SUM(total_laid_off) FROM layoffs2 GROUP BY country ORDER BY SUM(total_laid_off) DESC;
+                </code></pre>
+                
+                <h4>Rolling Summation</h4>
+                <pre><code class="language-sql">
+                        -- Monthly rolling sum of layoffs
+                        SELECT `date`, total_laid_off, 
+                               SUM(total_laid_off) OVER (ORDER BY `date` ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS rolling_sum
+                        FROM layoffs2
+                        ORDER BY `date`;
+                                        </code></pre>
+                <!-- Footer -->
+				<footer>
+					<div class="pagination">
+						<a href="index.html" class="button" style = "margin-left: 400px;">Back to Portfolio</a>
+					</div>
+				</footer>
+
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<section>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" />
+							</div>
+							<div class="field">
+								<label for="email">Email</label>
+								<input type="text" name="email" id="email" />
+							</div>
+							<div class="field">
+								<label for="message">Message</label>
+								<textarea name="message" id="message" rows="3"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" /></li>
+						</ul>
+					</form>
+				</section>
+				<section class="split contact">
+					<section class="alt">
+						<h3>Location</h3>
+						<p>Chicago, IL<br /></p>
+					</section>
+					
+					<section>
+						<h3>Email</h3>
+						<p><a href="#">shreeram14296@gmail.com</a></p>
+					</section>
+					<section>
+						<h3>Social</h3>
+						<ul class="icons alt">
+							<li><a href="https://www.linkedin.com/in/shreeramhiriyanna/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</section>
+				</section>
+			</footer>
+
+			<!-- Copyright -->
+			<div id="copyright">
+				<ul><li>&copy; Shreeram Hiriyanna Portfolio</li></ul>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
+
+                        

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Excel-Based Analytical Dashboard for Bike Buyers Data - Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo">Portfolio</a>
+        </header>
+        
+        <!-- Main -->
+        <div id="main">
+            <!-- Featured Post -->
+            <article class="post featured">
+                <header class="major">
+                
+                    <h1>Excel-Based Analytical Dashboard for Bike Buyers Data</h1>
+                    <p>An interactive Excel dashboard designed to analyze bike buyers' demographics and purchasing patterns.</p>
+                </header>
+            
+                <iframe width="800" height="600" frameborder="0" scrolling="no" src="https://iit0-my.sharepoint.com/personal/shiriyanna_hawk_iit_edu/_layouts/15/Doc.aspx?sourcedoc={f4944efa-1e59-4a45-b790-37b990e648b1}&action=embedview&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True"></iframe>
+            </article>
+
+            <!-- Project Details -->
+            <section>
+                <header class="major">
+                    <h2>Challenge</h2>
+                </header>
+                <p>The primary challenge was to analyze a dataset of bike buyers and derive meaningful insights regarding their purchasing behaviors. The dataset included various demographic details such as marital status, gender, income, education, occupation, and commute distance. The objective was to transform this raw data into a comprehensive and interactive dashboard that could be easily interpreted by stakeholders.</p>
+                
+                <header class="major">
+                    <h2>The Journey</h2>
+                </header>
+                
+                <h3>Step 1: Data Cleaning and Preparation</h3>
+                <ul>
+                    <li>Standardized data entries and handled missing values.</li>
+                    <li>Classified age groups and other categorical data for better analysis.</li>
+                </ul>
+                
+                <h3>Step 2: Creating Pivot Tables</h3>
+                <ul>
+                    <li>Utilized pivot tables to summarize and analyze the data effectively.</li>
+                    <li>Generated various metrics and key performance indicators (KPIs) from the data.</li>
+                </ul>
+                
+                <h3>Step 3: Designing the Interactive Dashboard</h3>
+                <ul>
+                    <li>Incorporated dynamic charts and graphs to visualize data insights.</li>
+                    <li>Added slicers to enable interactive filtering and data exploration.</li>
+                </ul>
+                
+                <header class="major">
+                    <h2>Conclusion</h2>
+                </header>
+                <p>The final output was a robust, interactive Excel dashboard that provided clear and actionable insights into the bike buyers' data. It highlighted significant trends and correlations, such as the impact of income and commute distance on bike purchases. This project not only demonstrated advanced Excel skills but also emphasized the importance of data visualization in making data-driven decisions. The dashboard is now a valuable tool for stakeholders to understand and strategize around bike buyers' behaviors.</p>
+                
+                <header class="major">
+                    <h2>Dashboard Features</h2>
+                </header>
+                
+                <h3>Data Cleaning and Preparation</h3>
+                <pre><code class="language-excel">
+-- Standardizing data entries
+=TRIM(A2)
+
+-- Handling missing values
+=IF(ISBLANK(B2), "Unknown", B2)
+                </code></pre>
+                
+                <h3>Creating Pivot Tables</h3>
+                <pre><code class="language-excel">
+-- Summarizing data using Pivot Tables
+-- Example: Summarizing income by gender and purchase status
+PIVOT TABLE: Rows - Gender, Columns - Purchased Bike, Values - Average of Income
+                </code></pre>
+                
+                <h3>Designing the Interactive Dashboard</h3>
+                <pre><code class="language-excel">
+-- Adding slicers for interactivity
+-- Example: Slicers for Gender, Region, and Education Level
+
+-- Creating dynamic charts
+-- Example: Bar chart showing bike purchases by age group
+                </code></pre>
+                
+                <!-- Footer -->
+				<footer>
+					<div class="pagination">
+						<a href="index.html" class="button" style="margin-left: 400px;">Back to Portfolio</a>
+					</div>
+				</footer>
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<section>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field">
+								<label for="name">Name</label>
+								<input type="text" name="name" id="name" />
+							</div>
+							<div class="field">
+								<label for="email">Email</label>
+								<input type="text" name="email" id="email" />
+							</div>
+							<div class="field">
+								<label for="message">Message</label>
+								<textarea name="message" id="message" rows="3"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send Message" /></li>
+						</ul>
+					</form>
+				</section>
+				<section class="split contact">
+					<section class="alt">
+						<h3>Location</h3>
+						<p>Chicago, IL<br /></p>
+					</section>
+					
+					<section>
+						<h3>Email</h3>
+						<p><a href="#">shreeram14296@gmail.com</a></p>
+					</section>
+					<section>
+						<h3>Social</h3>
+						<ul class="icons alt">
+							<li><a href="https://www.linkedin.com/in/shreeramhiriyanna/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</section>
+				</section>
+			</footer>
+
+			<!-- Copyright -->
+			<div id="copyright">
+				<ul><li>&copy; Shreeram Hiriyanna Portfolio</li></ul>
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
